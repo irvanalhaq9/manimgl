@@ -1,6 +1,13 @@
-import pkg_resources
+try:
+    from importlib.metadata import version
+except ImportError:
+    from importlib_metadata import version  # Python <3.8
 
-__version__ = pkg_resources.get_distribution("manimgl").version
+try:
+    __version__ = version("manimgl")
+except Exception:
+    __version__ = "unknown"
+
 
 from typing import TYPE_CHECKING
 
